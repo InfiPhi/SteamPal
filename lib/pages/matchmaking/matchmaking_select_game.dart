@@ -4,6 +4,8 @@ import 'package:steam_pal/widgets/buttons/button_round_gradient.dart';
 import 'package:steam_pal/widgets/game/game_list.dart';
 
 import '../../widgets/game/game.dart';
+import '../../widgets/text/text_gradient.dart';
+import '../welcome/login.dart';
 
 class MMSelectGame extends StatelessWidget {
   const MMSelectGame(this.setWidget, {Key? key}) : super(key: key);
@@ -23,13 +25,10 @@ class MMSelectGame extends StatelessWidget {
         children: [
           const Padding(
             padding: EdgeInsets.only(top: 64, bottom: 16),
-            child: Text(
-              "Select a Game",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+            child: GradientText(
+              "Select a game",
+              gradient: LinearGradient(colors: [Color(0xff37C4B7), Color(0xffB9C44E),]),
+              style: TextStyle(fontSize: 24,),
             ),
           ),
           GameList(selectGame),

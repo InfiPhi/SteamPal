@@ -1,0 +1,90 @@
+import 'package:flutter/material.dart';
+import 'package:steam_pal/main.dart';
+import 'package:steam_pal/pages/welcome/tab_bar.dart';
+import 'package:steam_pal/widgets/buttons/button_round_gradient.dart';
+
+import '../../widgets/text/text_gradient.dart';
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Container(
+            decoration: const BoxDecoration(
+                gradient: RadialGradient(
+                    center: Alignment.topRight,
+                    radius: 2,
+                    colors: [Color(0xff682757), Color(0xff21222D)]
+                )
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const GradientText(
+                    "Login",
+                    gradient: LinearGradient(colors: [Color(0xff37C4B7), Color(0xffB9C44E),]),
+                    style: TextStyle(fontSize: 36,),
+                  ),
+                  SizedBox(
+                    width: 300,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.white, width: 2),
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.blue, width: 2),
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            labelText: 'Email',
+                            labelStyle: const TextStyle(color: Colors.grey)
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 300,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.white, width: 2),
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.blue, width: 2),
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            labelText: 'Password',
+                            labelStyle: const TextStyle(color: Colors.grey)
+                        ),
+                      ),
+                    ),
+                  ),
+                  ButtonRoundGradient(
+                    text: "Login",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return const TabBarPage();
+                        }),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            )
+        ),
+      );
+  }
+}

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:steam_pal/widgets/game/game_list.dart';
 
+import '../../widgets/text/text_gradient.dart';
+
 class GameVaultPage extends StatelessWidget {
   const GameVaultPage({Key? key}) : super(key: key);
 
@@ -13,13 +15,10 @@ class GameVaultPage extends StatelessWidget {
         children: const [
           Padding(
             padding: EdgeInsets.only(top: 64, bottom: 16),
-            child: Text(
+            child: GradientText(
               "Game Vault",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+              gradient: LinearGradient(colors: [Color(0xff37C4B7), Color(0xffB9C44E),]),
+              style: TextStyle(fontSize: 24,),
             ),
           ),
           GameList(null),

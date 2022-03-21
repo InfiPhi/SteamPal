@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/buttons/button_circular_icon.dart';
+import '../welcome/login.dart';
 import 'matchmaking_widget_holder.dart';
 
 class MMSearch extends StatelessWidget {
@@ -14,7 +15,6 @@ class MMSearch extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text("Matchmaking Page"),
           ButtonCircularIcon(
             icon: Icons.person_search_rounded,
             iconSize: 90,
