@@ -4,7 +4,7 @@ import 'package:steam_pal/pages/welcome/splash.dart';
 void main() {
   Paint.enableDithering = true;
   runApp(const MaterialApp(
-    home: SplashPage()
+    home: SafeArea(child: SplashPage())
     )
   );
 }

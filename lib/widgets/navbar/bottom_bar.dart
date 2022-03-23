@@ -47,6 +47,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
             icon: Icon(Icons.list_alt),
             label: 'GameVault',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box_rounded),
+            label: 'Profile',
+          ),
         ],
       ),
     );
