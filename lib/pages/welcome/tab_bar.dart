@@ -4,7 +4,6 @@ import '../../widgets/navbar/bottom_bar.dart';
 import '../game_vault/game_vault.dart';
 import '../home/home.dart';
 import '../matchmaking/matchmaking_widget_holder.dart';
-import '../profile/profile.dart';
 
 class TabBarPage extends StatefulWidget {
   const TabBarPage({Key? key}) : super(key: key);
@@ -18,7 +17,6 @@ class _TabBarPageState extends State<TabBarPage> {
     HomePage(),
     MatchmakingPage(),
     GameVaultPage(),
-    Profile(),
   ];
 
   // Widget Selection
