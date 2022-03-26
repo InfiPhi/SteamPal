@@ -2,37 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import '../bg /custombg.dart';
 
-class  BioBg extends StatelessWidget {
-  final double width;
-  final double height ;
-  final double marginLeft;
-  final double marginTop ;
-  final double marginRight ;
-  final double marginBottom ;
 
-  const BioBg (this.width , this.height, this.marginLeft,
-      this.marginTop , this.marginRight , this.marginBottom ,);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [ Color(0xff264C54),Color(0xff264C54)],
-          ),
-          borderRadius: BorderRadius.circular(30),
-        ),
-        alignment: Alignment.topRight,
-        width: width,
-        height: height,
-        margin: EdgeInsets.fromLTRB(marginLeft,
-            marginTop , marginRight , marginBottom )
-    );
-  }
-}
 
 class FriendsOnline extends StatelessWidget {
   const FriendsOnline(this.numFriendsOnline);
@@ -204,36 +176,7 @@ class UserName extends StatelessWidget {
   }
 }
 
-class CustomBgHalf extends StatelessWidget {
-  final double width;
-  final double height;
-  const CustomBgHalf(this.width,this.height );
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [ Color(0xff2C6DD4),Color(0xff46F395)],
 
-          ),
-          borderRadius: BorderRadius.circular(30),
-
-        ),
-        alignment: Alignment.center,
-        width: width,
-        height: height,
-        margin: EdgeInsets.fromLTRB(0,0,0,20),
-        child:Stack(
-          children: [
-
-
-
-          ],
-        )
-
-    );
-  }
-}
 
 class FinderMatchStatus extends StatelessWidget {
   const FinderMatchStatus({Key? key}) : super(key: key);
@@ -363,7 +306,7 @@ class MyFavGame extends StatelessWidget {
                       child: TextButton(
                         onPressed: () =>{},
                         child: Image.asset(
-                          "assets/images/ror2_600x900.jpg",
+                          i,
                           height: 110,width: 80,
                         ),
                       ),
