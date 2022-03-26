@@ -1,13 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:steam_pal/main.dart';
-import 'package:steam_pal/pages/welcome/tab_bar.dart';
-import 'package:steam_pal/widgets/buttons/button_round_gradient.dart';
-
+import '../../widgets/bg /custombg.dart';
 import '../../widgets/profileComponents/profileComponents.dart';
-import '../../widgets/text/text_gradient.dart';
-import '../home/home.dart';
 
 
 class Profile extends StatelessWidget {
@@ -18,8 +12,8 @@ class Profile extends StatelessWidget {
     final genrelist = ["adventure","Action"];
     final profileFavGames = ['assets/images/profile.jpeg','assets/images/profile.jpeg',"assets/images/profile.jpeg"];
     return Scaffold(
-            body:SingleChildScrollView(
-        child: Container(
+            body: SingleChildScrollView(
+            child: Container(
                 decoration: const BoxDecoration(
                     gradient: RadialGradient(
                         center: Alignment.topRight,
@@ -43,8 +37,6 @@ class Profile extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       LatestInfo("John" , 3 , "Jocker"),
-
-
                       SizedBox(height: 30),
                       MyFavGame(profileFavGames),
                       SizedBox(height: 30),
