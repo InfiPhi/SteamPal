@@ -12,10 +12,10 @@ class GameList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: GridView.count(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(8),
           crossAxisCount: colCount,
-          crossAxisSpacing: 16,
-          childAspectRatio: 0.56,
+          childAspectRatio: 0.63,
+          mainAxisSpacing: 8,
           children: [
             Game(onPressed),
             Game(onPressed),

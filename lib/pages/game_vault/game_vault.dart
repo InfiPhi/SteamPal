@@ -13,12 +13,14 @@ class GameVaultPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const [
-          Padding(
-            padding: EdgeInsets.only(top: 64, bottom: 16),
-            child: GradientText(
-              "Game Vault",
-              gradient: LinearGradient(colors: [Color(0xff37C4B7), Color(0xffB9C44E),]),
-              style: TextStyle(fontSize: 24,),
+          TextGradient(
+            "Game Vault",
+            gradient: LinearGradient(colors: [
+              Color(0xff37C4B7),
+              Color(0xffB9C44E),
+            ]),
+            style: TextStyle(
+              fontSize: 36,
             ),
           ),
           GameList(null),
