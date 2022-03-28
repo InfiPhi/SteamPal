@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import '../../widgets/bg /custombg.dart';
+import '../../widgets/bg/custombg.dart';
 import '../../widgets/profileComponents/profileComponents.dart';
 
 
@@ -28,7 +28,17 @@ class Profile extends StatelessWidget {
                         children: [
                           CustomBgHalf(480,300),
                           BioBg(360,300,20,70,0,20),
-                          Avatar(250, 20, 5, 0,'assets/images/profile.jpeg'),
+
+                          TextButton(
+                            style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),),
+                              onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const Profile()));
+                          },
+                          child:
+                          Avatar(250, 20, 5, 0,'assets/images/profile.jpeg')),
                           UserName(40, 100, 0, 0),
                           BioInfo("Avid gamer, fan of\n Studio Ghibli"),
                           GameGenre(genrelist),

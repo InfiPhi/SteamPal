@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:steam_pal/widgets/profileComponents/profileComponents.dart';
-import '../../widgets/buttons/button_round_gradient.dart';
 import '../../widgets/homeComponents/matchFinderSection.dart';
 import '../../widgets/homeComponents/recentGames.dart';
-import '../../widgets/text/text_gradient.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,9 +10,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final recentGamesList = [
       'assets/images/profile.jpeg',
-      'assets/images/profile.jpeg',
-      'assets/images/profile.jpeg',
-      'assets/images/profile.jpeg',
+      'assets/images/g1.jpeg',
+      'assets/images/g1.jpeg',
+      'assets/images/g1.jpeg',
       'assets/images/profile.jpeg'
     ];
     return SafeArea(

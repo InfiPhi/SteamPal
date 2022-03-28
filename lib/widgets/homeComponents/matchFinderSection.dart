@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:steam_pal/pages/matchmaking/matchmaking_widget_holder.dart';
 
 import '../buttons/button_round_gradient.dart';
 
@@ -65,6 +66,11 @@ class MatchFinder extends StatelessWidget {
                       width: 10,
                       height: 5,
                       text: "Start Now",
+                      onPressed: (){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const MatchmakingPage()));
+                      },
                     )
                   ]),
                   margin: EdgeInsets.fromLTRB(80, 16, 0, 0),
