@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/buttons/button_circular_icon.dart';
+import '../../widgets/buttons/button_icon_circular.dart';
 import 'matchmaking_widget_holder.dart';
 
 class MMSearch extends StatelessWidget {

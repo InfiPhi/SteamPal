@@ -2,7 +2,7 @@
 // [
 //   {
 //     "id": 8173,
-//     "name": "Overwatch"
+//     "name": "Risk of Rain 2"
 //   }
 // ]
 
@@ -14,7 +14,7 @@ class IGDBGameIDResponse {
   IGDBGameIDResponse.fromJson(List<dynamic> json)
       : potentialGames = List<IGDBGameID>.from(json.map((game) => IGDBGameID.fromJson(game)));
 
-  Map<String, dynamic> toJson() => {'response': potentialGames.map((game) => game.toJson())};
+  Iterable<Map<String, dynamic>> toJson() => potentialGames.map((game) => game.toJson());
 }
 
 class IGDBGameID {

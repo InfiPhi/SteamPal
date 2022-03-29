@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:steam_pal/widgets/game/game_list.dart';
 
 import '../../widgets/text/text_gradient.dart';
 
@@ -23,7 +22,7 @@ class GameVaultPage extends StatelessWidget {
               fontSize: 36,
             ),
           ),
-          GameList(null),
+          //GameList(null),
         ],
       ),
     );

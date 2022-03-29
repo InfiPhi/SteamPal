@@ -43,11 +43,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list_alt),
-            label: 'GameVault',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.api),
-            label: 'Steam API',
+            label: 'Game Vault',
           ),
         ],
       ),

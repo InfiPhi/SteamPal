@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:steam_pal/pages/testing/steam_api.dart';
-
 import '../../widgets/navbar/bottom_bar.dart';
 import '../game_vault/game_vault.dart';
 import '../home/home.dart';
@@ -18,7 +16,6 @@ class _TabBarPageState extends State<TabBarPage> {
     const HomePage(),
     const MatchmakingPage(),
     const GameVaultPage(),
-    SteamAPITestingPage(),
   ];
 
   // Widget Selection
