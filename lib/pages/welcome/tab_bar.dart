@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../widgets/navbar/bottom_bar.dart';
 import '../game_vault/game_vault.dart';
 import '../home/home.dart';
@@ -13,14 +12,15 @@ class TabBarPage extends StatefulWidget {
 }
 
 class _TabBarPageState extends State<TabBarPage> {
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    MatchmakingPage(),
-    GameVaultPage(),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const HomePage(),
+    const MatchmakingPage(),
+    const GameVaultPage(),
   ];
 
   // Widget Selection
   int _selectedIndex = 0;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -35,17 +35,17 @@ class _TabBarPageState extends State<TabBarPage> {
               gradient: RadialGradient(
                   center: Alignment.topRight,
                   radius: 2,
-                  colors: [Color(0xff682757), Color(0xff21222D)]
+                  colors: [Color(0xff682757), Color(0xff21222D)])),
+          child: SafeArea(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: _widgetOptions.elementAt(_selectedIndex),
               )
-          ),
-          child: Center(
-            child: _widgetOptions.elementAt(_selectedIndex),
+            ),
           ),
         ),
-        bottomNavigationBar: CustomBottomNavigationBar(
-            _selectedIndex,
-            _onItemTapped
-        )
-    );
+        bottomNavigationBar:
+            CustomBottomNavigationBar(_selectedIndex, _onItemTapped));
   }
 }

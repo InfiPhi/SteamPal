@@ -41,16 +41,14 @@ class _MatchmakingPage extends State<MatchmakingPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-          decoration: const BoxDecoration(
-              gradient: RadialGradient(
-                  center: Alignment.topRight,
-                  radius: 2,
-                  colors: [Color(0xff682757), Color(0xff21222D)]
-              )
-          ),
-          child: Center(
-            child: _widgetOptions.elementAt(_selectedIndex),
-          ),
-        );
+      decoration: const BoxDecoration(
+          gradient: RadialGradient(
+              center: Alignment.topRight,
+              radius: 2,
+              colors: [Color(0xff682757), Color(0xff21222D)])),
+      child: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+    );
   }
 }
