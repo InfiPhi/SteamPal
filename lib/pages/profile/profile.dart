@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import '../../widgets/bg /custombg.dart';
+import '../../widgets/bg/custombg.dart';
 import '../../widgets/profileComponents/profileComponents.dart';
 
 
