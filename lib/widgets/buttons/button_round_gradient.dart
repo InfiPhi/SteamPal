@@ -7,15 +7,14 @@ class ButtonRoundGradient extends StatelessWidget {
   final double height;
   final List<Color> colors;
 
-  const ButtonRoundGradient(
-    { // Optionals
-      this.text = "Button",
-      this.onPressed,
-      this.width = 300,
-      this.height = 50,
-      this.colors = const [Color(0xffA6AC65), Color(0xff37C4B7)],
-    }
-  );
+  const ButtonRoundGradient({
+    // Optionals
+    this.text = "Button",
+    this.onPressed,
+    this.width = 300,
+    this.height = 50,
+    this.colors = const [Color(0xffA6AC65), Color(0xff37C4B7)],
+  });
 
   @override
   Widget build(BuildContext context) {

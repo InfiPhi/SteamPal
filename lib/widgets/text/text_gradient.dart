@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class GradientText extends StatelessWidget {
-  const GradientText(
-      this.text, {
-        required this.gradient,
-        this.style,
-      });
+class TextGradient extends StatelessWidget {
+  const TextGradient(
+    this.text, {
+    required this.gradient,
+    this.style,
+  });
 
   final String text;
   final TextStyle? style;
@@ -19,25 +19,6 @@ class GradientText extends StatelessWidget {
         Rect.fromLTWH(0, 0, bounds.width, bounds.height),
       ),
       child: Text(text, style: style),
-    );
-  }
-}
-
-
-class CustomText extends StatelessWidget {
-  const CustomText({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const GradientText(
-      "Home",
-      gradient: LinearGradient(colors: [
-        Color(0xff37C4B7),
-        Color(0xffB9C44E),
-      ]),
-      style: TextStyle(
-        fontSize: 36,
-      ),
     );
   }
 }
