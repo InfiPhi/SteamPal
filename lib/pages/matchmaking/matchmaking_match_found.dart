@@ -7,19 +7,18 @@ class MMMatchFound extends StatelessWidget {
   final String matchName;
   final void Function(MMWidget)? setWidget;
 
-  const MMMatchFound(this.setWidget, {this.matchName = "John Doe", Key? key}) : super(key: key);
+  const MMMatchFound(this.setWidget, {this.matchName = "John Doe", Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: RadialGradient(
-            center: Alignment.topRight,
-            radius: 2,
-            colors: [Color(0xff682757), Color(0xff21222D)]
-          )
-        ),
+            gradient: RadialGradient(
+                center: Alignment.topRight,
+                radius: 2,
+                colors: [Color(0xff682757), Color(0xff21222D)])),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -8,22 +8,20 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+      body: Container(
           decoration: const BoxDecoration(
               gradient: RadialGradient(
                   center: Alignment.topRight,
                   radius: 2,
-                  colors: [Color(0xff682757), Color(0xff21222D)]
-              )
-          ),
+                  colors: [Color(0xff682757), Color(0xff21222D)])),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(
-                    Icons.videogame_asset,
-                    color: Colors.white,
-                    size: 128,
+                  Icons.videogame_asset,
+                  color: Colors.white,
+                  size: 128,
                 ),
                 ButtonRoundGradient(
                   text: "Get Started",
@@ -38,8 +36,7 @@ class SplashPage extends StatelessWidget {
                 ),
               ],
             ),
-          )
-        ),
-      );
+          )),
+    );
   }
 }

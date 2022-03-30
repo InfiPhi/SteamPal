@@ -4,11 +4,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int)? onItemTap;
 
-  const CustomBottomNavigationBar(
-    this.selectedIndex,
-    this.onItemTap,
-    {Key? key}
-  ) : super(key: key);
+  const CustomBottomNavigationBar(this.selectedIndex, this.onItemTap,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +17,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               color: Colors.black.withOpacity(0.25),
               spreadRadius: 0.5,
               blurRadius: 10,
-              offset: const Offset(0, -4)
-          ),
+              offset: const Offset(0, -4)),
         ],
       ),
       child: BottomNavigationBar(
@@ -30,29 +27,26 @@ class CustomBottomNavigationBar extends StatelessWidget {
         iconSize: 40,
         elevation: 0,
         currentIndex: selectedIndex,
-        backgroundColor: const Color(0xff222333),
+        backgroundColor: const Color(0xff242333),
         selectedItemColor: const Color(0xff29d8f7),
-        unselectedItemColor: const Color(0x4029D8F7),
+        unselectedItemColor: const Color(0x4029d8f7),
         onTap: onItemTap,
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_filled),
             label: 'Home',
           ),
-
           BottomNavigationBarItem(
             icon: Icon(Icons.person_search),
             label: 'Matchmaking',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list_alt),
-            label: 'GameVault',
+            label: 'Game Vault',
           ),
-
         ],
       ),
     );
   }
 }
-
-
