@@ -28,7 +28,7 @@ class Profile extends StatelessWidget {
                         children: [
                           CustomBgHalf(480,300),
                           BioBg(360,300,20,70,0,20),
-                          Avatar(250, 20, 5, 0,'assets/images/profile.jpeg'),
+                          Avatar('assets/images/profile.jpeg'),
                           UserName(40, 100, 0, 0),
                           BioInfo("Avid gamer, fan of\n Studio Ghibli"),
                           GameGenre(genrelist),
