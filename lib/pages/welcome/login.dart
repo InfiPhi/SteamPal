@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:steam_pal/pages/welcome/tab_bar.dart';
+import 'package:steam_pal/pages/welcome/hub.dart';
 import 'package:steam_pal/widgets/buttons/button_round_gradient.dart';
 
 import '../../widgets/text/text_gradient.dart';
@@ -79,11 +79,12 @@ class LoginPage extends StatelessWidget {
                 ButtonRoundGradient(
                   text: "Login",
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return const TabBarPage();
+                        return const HubPage();
                       }),
+                      (route) => false,
                     );
                   },
                 ),

@@ -3,9 +3,12 @@ import 'package:steam_pal/widgets/profileComponents/profileComponents.dart';
 
 import '../../widgets/home/matchFinderSection.dart';
 import '../../widgets/home/recentGames.dart';
+import '../../widgets/navigation/nested_navigation.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key, required this.navigatorKey}) : super(key: key);
+
+  final GlobalKey navigatorKey;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,9 @@ class HomePage extends StatelessWidget {
       'assets/images/profile.jpeg',
       'assets/images/profile.jpeg'
     ];
-    return Column(
+    return NestedNavigator(
+        navigatorKey: navigatorKey,
+        child: Column(
       children: [
         //a row to show the avatar and the welcoming message
         Padding(
@@ -43,6 +48,6 @@ class HomePage extends StatelessWidget {
         RecentGames(recentGamesList),
         const MatchFinder(30),
       ],
-    );
+    ));
   }
 }

@@ -16,7 +16,7 @@ class _Game extends State<Game> {
   Widget build(BuildContext context) {
     return widget.url != null
         ? TextButton(
-            onPressed: () => widget.onPressed?.call(),
+            onPressed: () => widget.onPressed?.call("Risk of Rain 2"),
             child: Container(
                 decoration: BoxDecoration(boxShadow: [
                   BoxShadow(

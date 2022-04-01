@@ -30,7 +30,6 @@ class _GameList extends State<GameList> {
   Widget build(BuildContext context) {
     return Expanded(
         child: GridView.count(
-          padding: const EdgeInsets.all(8),
           crossAxisCount: 2,
           childAspectRatio: 0.76,
           children: [
