@@ -15,7 +15,7 @@ class GameVaultPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: const [
-              SearchBar(title: 'Game Vault'),
+              //SearchBar(title: 'Game Vault', list: []),
             ],
           ),
         ));
