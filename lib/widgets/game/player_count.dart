@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class LivePlayerCount extends StatelessWidget {
-  LivePlayerCount({
-    Key? key,
-    this.playerCount = 0
-  }) : super(key: key);
+  LivePlayerCount({Key? key, this.playerCount = 0}) : super(key: key);
 
   final int playerCount;
   final String _label = "Live Player Count";
@@ -21,13 +18,9 @@ class LivePlayerCount extends StatelessWidget {
           // Shadow color
           BoxShadow(
               color: Colors.black.withOpacity(0.25),
-              offset: const Offset(0, -4)
-          ),
+              offset: const Offset(0, -4)),
           // Background color
-          const BoxShadow(
-              color: Color(0xff1F343E),
-              blurRadius: 2
-          ),
+          const BoxShadow(color: Color(0xff1F343E), blurRadius: 2),
         ],
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -42,14 +35,19 @@ class LivePlayerCount extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Text(
-            _formatter.format(playerCount),
-            style: const TextStyle(
-              color: Color(0xffa3c79d),
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-            ),
-          )
+          playerCount < 0
+              ? const Padding(
+                  padding: EdgeInsets.all(4),
+                  child: CircularProgressIndicator(),
+                )
+              : Text(
+                  _formatter.format(playerCount),
+                  style: const TextStyle(
+                    color: Color(0xffa3c79d),
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
         ],
       ),
     );

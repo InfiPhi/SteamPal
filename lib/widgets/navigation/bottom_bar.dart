@@ -11,15 +11,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.25),
-              spreadRadius: 0.5,
-              blurRadius: 10,
-              offset: const Offset(0, -4)),
-        ],
-      ),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+            color: Colors.black.withOpacity(0.25),
+            spreadRadius: 0.5,
+            blurRadius: 10,
+            offset: const Offset(0, -4)),
+      ]),
       child: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/json/steam/owned_games.dart';
 import '../../domain/services/steam_api.dart';
-import '../../widgets/game/game_list.dart';
+import '../../widgets/game/game_grid.dart';
 import '../../widgets/navigation/nested_navigation.dart';
 import '../../widgets/navigation/search_bar.dart';
 import 'matchmaking_search_player.dart';
@@ -54,12 +53,12 @@ class _MatchmakingPage extends State<MatchmakingPage> {
               Builder(
                 builder: (context) {
                   return Expanded(
-                      child: GameList(
+                      child: GameGrid(
                           games: _filteredList,
-                          onPressed: (String game) {
+                          onPressed: (String gameTitle) {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
-                              return MMSearchPlayerPage(gameTitle: game);
+                              return MMSearchPlayerPage(gameTitle: gameTitle);
                             }));
                           }));
                 },

@@ -3,17 +3,17 @@ import 'package:steam_pal/widgets/game/player_count.dart';
 import 'package:steam_pal/widgets/game/searching_popup.dart';
 import 'package:steam_pal/widgets/navigation/top_bar.dart';
 
+import '../../domain/models/game.dart';
+import '../../domain/services/steam_api.dart';
 import '../../widgets/buttons/button_icon_circular.dart';
 
 class MMSearchPlayerPage extends StatefulWidget {
   const MMSearchPlayerPage({
     Key? key,
-    this.gameTitle = "Unknown",
-    this.playerCount = 0,
+    required this.gameTitle
   }) : super(key: key);
 
   final String gameTitle;
-  final int playerCount;
 
   @override
   State<MMSearchPlayerPage> createState() => _MMSearchPlayerPage();
@@ -21,11 +21,20 @@ class MMSearchPlayerPage extends StatefulWidget {
 
 class _MMSearchPlayerPage extends State<MMSearchPlayerPage> {
   bool _isSearching = false;
+  int _playerCount = -1;
 
   @override
   void initState() {
     super.initState();
-    // TO-DO: Get steam player count
+    var gameDetails = Game(widget.gameTitle);
+    gameDetails.load().whenComplete(() {
+      print(gameDetails.toString());
+    });
+    SteamAPI.getPlayerCount(632360).then((response) {
+      setState(() {
+        _playerCount = response.response.playerCount;
+      });
+    });
   }
 
   void _beginSearch() async {
@@ -51,7 +60,7 @@ class _MMSearchPlayerPage extends State<MMSearchPlayerPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  LivePlayerCount(playerCount: widget.playerCount),
+                  LivePlayerCount(playerCount: _playerCount),
                   Column(
                     children: [
                       ButtonCircularIcon(

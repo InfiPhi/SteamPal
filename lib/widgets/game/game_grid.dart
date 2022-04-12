@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:steam_pal/domain/services/igdb_api.dart';
 
-import 'game.dart';
+import 'game_item.dart';
 
-class GameList extends StatefulWidget {
-  const GameList({Key? key, required this.games, this.onPressed})
+class GameGrid extends StatefulWidget {
+  const GameGrid({Key? key, required this.games, this.onPressed})
       : super(key: key);
 
   final List<String> games;
   final Function? onPressed;
 
   @override
-  State<GameList> createState() => _GameList();
+  State<GameGrid> createState() => _GameGrid();
 }
 
-class _GameList extends State<GameList> {
+class _GameGrid extends State<GameGrid> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<GameInfo>>(
@@ -36,7 +36,7 @@ class _GameList extends State<GameList> {
                     childAspectRatio: 3/4,
                     padding: const EdgeInsets.only(left: 4, right: 4, bottom: 4),
                     children: snapshot.data!.map((game) {
-                      return Game(gameCover: game, onPressed: widget.onPressed);
+                      return GameItem(gameCover: game, onPressed: widget.onPressed);
                     }).toList(),
                   );
           } else {

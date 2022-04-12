@@ -24,7 +24,6 @@ class _SearchBar extends State<SearchBar> {
   bool isSearching = false;
 
   void onTextChange(value) {
-    print(value);
     var filteredList = widget.list
         .where((title) => title.toLowerCase().contains(value.toLowerCase()))
         .toList();
