@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:steam_pal/pages/home/home.dart';
 import 'package:steam_pal/pages/welcome/login.dart';
 import 'package:steam_pal/widgets/buttons/button_round_gradient.dart';
 
 import '../../domain/models/login/login_model.dart';
 import '../../view_model/signup/signup_view_model_impl.dart';
 import '../../widgets/text/text_gradient.dart';
+import 'steam_login.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -142,7 +142,7 @@ class SignupPage extends StatelessWidget {
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => HomePage(),
+                      builder: (BuildContext context) => SteamLogin(),
                     ),
                     (route) => false,
                   );

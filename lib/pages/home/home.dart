@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:steam_pal/widgets/profileComponents/profileComponents.dart';
 
-import '../../widgets/homeComponents/matchFinderSection.dart';
-import '../../widgets/homeComponents/recentGames.dart';
+import '../../widgets/home/matchFinderSection.dart';
+import '../../widgets/home/recentGames.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
                         ),
                         margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
                       ),
-                      Avatar(50, 10, 0, 0, 'assets/images/profile.jpeg'),
+                      Avatar('assets/images/profile.jpeg'),
                     ],
                   ),
 
