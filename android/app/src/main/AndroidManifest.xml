@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.group_five.steam_pal">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="steam_pal"
         android:name="${applicationName}"

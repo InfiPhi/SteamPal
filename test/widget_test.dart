@@ -12,9 +12,7 @@ import 'package:steam_pal/pages/welcome/splash.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(
-        home: SplashPage()
-    ));
+    await tester.pumpWidget(MaterialApp(home: SplashPage()));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
@@ -29,4 +27,3 @@ void main() {
     expect(find.text('1'), findsOneWidget);
   });
 }
-
