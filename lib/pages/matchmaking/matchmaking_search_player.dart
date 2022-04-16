@@ -20,16 +20,21 @@ class MMSearchPlayerPage extends StatefulWidget {
 }
 
 class _MMSearchPlayerPage extends State<MMSearchPlayerPage> {
+  late Game gameDetails;
   bool _isSearching = false;
   int _playerCount = -1;
 
   @override
   void initState() {
     super.initState();
-    var gameDetails = Game(widget.gameTitle);
+
+    // Load game details
+    gameDetails = Game(widget.gameTitle);
     gameDetails.load().whenComplete(() {
       print(gameDetails.toString());
     });
+
+    // Load player count
     SteamAPI.getPlayerCount(632360).then((response) {
       setState(() {
         _playerCount = response.response.playerCount;

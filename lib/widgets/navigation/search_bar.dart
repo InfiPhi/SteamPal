@@ -7,13 +7,13 @@ class SearchBar extends StatefulWidget {
   const SearchBar({
     Key? key,
     required this.title,
-    required this.list,
-    required this.updateList,
+    required this.searchCallback,
+    this.filters,
   }) : super(key: key);
 
   final String title;
-  final List<String> list;
-  final void Function(List<String>) updateList;
+  final void Function(String) searchCallback;
+  final List<String>? filters;
 
   @override
   State<SearchBar> createState() => _SearchBar();
@@ -22,12 +22,10 @@ class SearchBar extends StatefulWidget {
 class _SearchBar extends State<SearchBar> {
   final TextEditingController _controller = TextEditingController();
   bool isSearching = false;
+  String dropdownValue = "";
 
   void onTextChange(value) {
-    var filteredList = widget.list
-        .where((title) => title.toLowerCase().contains(value.toLowerCase()))
-        .toList();
-    widget.updateList(filteredList);
+    widget.searchCallback(value);
   }
 
   void beginSearch() {
@@ -41,7 +39,7 @@ class _SearchBar extends State<SearchBar> {
       isSearching = false;
     });
     _controller.text = "";
-    widget.updateList(widget.list);
+    onTextChange("");
   }
 
   void clearText() {
@@ -50,7 +48,15 @@ class _SearchBar extends State<SearchBar> {
       cancelSearch();
     } else {
       _controller.text = "";
-      widget.updateList(widget.list);
+      onTextChange("");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.filters != null) {
+      dropdownValue = widget.filters!.first;
     }
   }
 
@@ -72,11 +78,9 @@ class _SearchBar extends State<SearchBar> {
             elevation: 0,
             backgroundColor: Colors.transparent,
             leading: ButtonIconGradient(
-                icon: Icons.chevron_left_rounded,
-                onPressed: cancelSearch),
+                icon: Icons.chevron_left_rounded, onPressed: cancelSearch),
             actions: [
-              ButtonIconGradient(
-                  icon: Icons.clear, onPressed: clearText)
+              ButtonIconGradient(icon: Icons.clear, onPressed: clearText)
             ],
           )
         : AppBar(
@@ -92,9 +96,44 @@ class _SearchBar extends State<SearchBar> {
             centerTitle: true,
             elevation: 0,
             backgroundColor: Colors.transparent,
-            actions: [
-              ButtonIconGradient(onPressed: beginSearch)
-            ],
+            leadingWidth: 100,
+            leading: widget.filters == null
+                ? const SizedBox()
+                : Center(
+                    child: Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: DropdownButton<String>(
+                        value: dropdownValue,
+                        isExpanded: true,
+                        dropdownColor: const Color(0xff5d2750),
+                        style: const TextStyle(color: Color(0xff8cbb6e)),
+                        icon: const Icon(Icons.arrow_drop_down,
+                            color: Color(0xff8cbb6e)),
+                        underline: const SizedBox(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownValue = newValue!;
+                            onTextChange(newValue == widget.filters?.first
+                                ? ""
+                                : newValue);
+                          });
+                        },
+                        items: widget.filters
+                            ?.map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: TextGradient(value,
+                                  gradient: const LinearGradient(colors: [
+                                    Color(0xff37C4B7),
+                                    Color(0xffB9C44E),
+                                  ])),
+                            ),
+                          );
+                        }).toList()),
+                  )),
+            actions: [ButtonIconGradient(onPressed: beginSearch)],
           );
   }
 }

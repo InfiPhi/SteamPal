@@ -2,19 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:steam_pal/domain/services/igdb_api.dart';
 
-import '../../domain/models/game.dart';
-
-class GameItem extends StatefulWidget {
+class GameTile extends StatefulWidget {
   final GameInfo? gameCover;
   final Function? onPressed;
 
-  const GameItem({Key? key, this.gameCover, this.onPressed}) : super(key: key);
+  const GameTile({Key? key, this.gameCover, this.onPressed}) : super(key: key);
 
   @override
-  State<GameItem> createState() => _GameItem();
+  State<GameTile> createState() => _GameTile();
 }
 
-class _GameItem extends State<GameItem> {
+class _GameTile extends State<GameTile> {
   @override
   Widget build(BuildContext context) {
     return widget.gameCover != null
@@ -37,8 +35,7 @@ class _GameItem extends State<GameItem> {
                         image: imageProvider, fit: BoxFit.fill)),
               ),
               placeholder: (context, url) => const CircularProgressIndicator(),
-            )
-        )
+            ))
         : const Icon(
             Icons.error,
             color: Colors.red,

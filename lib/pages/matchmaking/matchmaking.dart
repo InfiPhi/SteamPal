@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:steam_pal/widgets/loading/loading_linear.dart';
 
 import '../../domain/services/steam_api.dart';
 import '../../widgets/game/game_grid.dart';
@@ -19,23 +20,35 @@ class MatchmakingPage extends StatefulWidget {
 class _MatchmakingPage extends State<MatchmakingPage> {
   List<String> _games = [];
   List<String> _filteredList = [];
+  bool isLoading = false;
 
-  void updateGames(List<String> newGames) {
+  void updateGames(List<String> gameQuery) {
     setState(() {
-      _filteredList = newGames;
+      _filteredList = gameQuery;
+    });
+  }
+
+  void searchGames(String query) {
+    setState(() {
+      _filteredList = _games
+          .where((title) => title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
     });
   }
 
   @override
   void initState() {
     super.initState();
+    setState(() { isLoading = true; });
     SteamAPI.getOwnedGames('76561198104497578').then((response) {
       if (response.response.games.isNotEmpty) {
+        _games = response.response.games.map((g) => g.name).toList();
         setState(() {
-          _games = response.response.games.map((g) => g.name).toList();
           _filteredList = _games;
         });
       }
+    }).whenComplete(() {
+      setState(() { isLoading = false; });
     });
   }
 
@@ -47,21 +60,23 @@ class _MatchmakingPage extends State<MatchmakingPage> {
           child: Column(
             children: [
               SearchBar(
-                  title: 'Which Game?',
-                  list: _games,
-                  updateList: updateGames),
-              Builder(
-                builder: (context) {
-                  return Expanded(
-                      child: GameGrid(
-                          games: _filteredList,
-                          onPressed: (String gameTitle) {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) {
-                              return MMSearchPlayerPage(gameTitle: gameTitle);
-                            }));
+                  title: 'Which Game?', searchCallback: searchGames),
+              Expanded(child:
+                Builder(
+                  builder: (context) {
+                    return GameGrid(
+                        games: _filteredList,
+                        isLoading: isLoading,
+                        onPressed: (String gameTitle) {
+                          // Hide Keyboard
+                          FocusManager.instance.primaryFocus?.unfocus();
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return MMSearchPlayerPage(gameTitle: gameTitle);
                           }));
-                },
+                        });
+                  },
+                )
               )
             ],
           ),

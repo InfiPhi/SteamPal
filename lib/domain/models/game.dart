@@ -37,14 +37,16 @@ class Game {
     platforms = results[2] as List<String>;
     companies = results[3] as List<String>;
 
-    // TO-DO: COMPANIES
-
     // Date game was released
     releaseDate = DateTime.fromMicrosecondsSinceEpoch(game.releaseDate * 1000000, isUtc: true);
   }
 
   String dateToString() {
     return releaseDate != null ? DateFormat.yMMMd().format(releaseDate!) : "Unknown";
+  }
+
+  bool isSteamGame() {
+    return steamID != null;
   }
 
   @override
