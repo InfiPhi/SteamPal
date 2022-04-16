@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:steam_pal/domain/models/json/steampal/games.dart';
 import 'package:steam_pal/pages/game_vault/gamevault_game_info.dart';
 import 'package:steam_pal/widgets/buttons/button_icon_circular.dart';
 
 import '../../domain/services/steam_api.dart';
+import '../../domain/services/steampal_api.dart';
 import '../../widgets/game/game_grid.dart';
 import '../../widgets/navigation/nested_navigation.dart';
 import '../../widgets/navigation/search_bar.dart';
@@ -18,7 +20,12 @@ class GameVaultPage extends StatefulWidget {
 
 class _GameVaultPage extends State<GameVaultPage> {
   // Users full list of games
-  List<String> _games = [];
+  // Key = game name
+  // Value = game details
+  final Map<String, SteamPalGame> _games = {};
+
+  // Users full list of game names (used for querying)
+  final List<String> _gameNames = [];
 
   // List of games that appear in search query
   List<String> _filteredList = [];
@@ -26,46 +33,53 @@ class _GameVaultPage extends State<GameVaultPage> {
   // Determines if UI is loading or not
   bool isLoading = false;
 
-  String dropdownValue = "All";
-
-  void loadGames() {
+  // Callback function used by the search bar
+  void searchGames(String query) {
     setState(() {
-      isLoading = true;
-    });
-
-    // TO-DO: GameVault games from server
-
-    // Steam Games
-    SteamAPI.getOwnedGames('76561198104497578').then((response) {
-      if (response.response.games.isNotEmpty) {
-        _games = response.response.games.map((g) => g.name).toList();
-        setState(() {
-          _filteredList = _games;
-        });
-      }
-    }).whenComplete(() {
-      setState(() {
-        isLoading = false;
-      });
+      _filteredList = _gameNames
+          .where((title) => title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
     });
   }
 
-  void searchGames(String query) {
-    setState(() {
-      if (dropdownValue == "Steam") {
-        _filteredList = [];
-      } else {
-        _filteredList = _games
-            .where((title) => title.toLowerCase().contains(query.toLowerCase()))
-            .toList();
-      }
-    });
+  // TO-DO:
+  void addGame() {
+
   }
 
   @override
   void initState() {
     super.initState();
-    loadGames();
+
+    // Set UI to loading
+    setState(() {
+      isLoading = true;
+    });
+    // Get Users Games from Server
+    SteamPalAPI.getAllUserGames().then((response) {
+      // User has no games, add their steam games
+      if (response.games.isEmpty) {
+        SteamAPI.getOwnedGames('76561198104497578').then((response) {
+          if (response.response.games.isNotEmpty) {
+            for (var game in response.response.games) {
+              SteamPalAPI.addGame(game.name);
+            }
+          }
+        });
+      }
+      // User has games
+      else {
+        for (SteamPalGame game in response.games) {
+          _games[game.name] = game;
+          _gameNames.add(game.name);
+        }
+      }
+    }).whenComplete(() {
+      // Set UI to not-loading
+      setState(() {
+        isLoading = false;
+      });
+    });
   }
 
   @override
@@ -90,7 +104,7 @@ class _GameVaultPage extends State<GameVaultPage> {
                       FocusManager.instance.primaryFocus?.unfocus();
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return GVGameInfoPage(gameTitle: gameTitle);
+                        return GVGameInfoPage(game: _games[gameTitle]!);
                       }));
                     });
               }))
@@ -103,7 +117,7 @@ class _GameVaultPage extends State<GameVaultPage> {
                 child: ButtonCircularIcon(
                   iconSize: 32,
                   padding: 16,
-                  onPressed: () {},
+                  onPressed: addGame,
                 ),
               )),
         ],
