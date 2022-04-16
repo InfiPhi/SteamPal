@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:steam_pal/pages/matchmaking/matchmaking_widget_holder.dart';
 import 'package:steam_pal/widgets/buttons/button_icon_gradient.dart';
-import 'package:steam_pal/widgets/game/game_list.dart';
 
 import '../../widgets/text/text_gradient.dart';
 
@@ -54,7 +53,7 @@ class MMSelectGame extends StatelessWidget {
               )
             ],
           ),
-          GameList(_tempGames, onPressed: selectGame),
+          //GameList(_tempGames, onPressed: selectGame),
         ],
       ),
     );
