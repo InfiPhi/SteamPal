@@ -35,14 +35,19 @@ class LivePlayerCount extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Text(
-            _formatter.format(playerCount),
-            style: const TextStyle(
-              color: Color(0xffa3c79d),
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-            ),
-          )
+          playerCount < 0
+              ? const Padding(
+                  padding: EdgeInsets.all(4),
+                  child: CircularProgressIndicator(),
+                )
+              : Text(
+                  _formatter.format(playerCount),
+                  style: const TextStyle(
+                    color: Color(0xffa3c79d),
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
         ],
       ),
     );

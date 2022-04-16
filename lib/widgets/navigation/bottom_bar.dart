@@ -11,15 +11,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-              color: Colors.black.withOpacity(0.25),
-              spreadRadius: 0.5,
-              blurRadius: 10,
-              offset: const Offset(0, -4)),
-        ],
-      ),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+            color: Colors.black.withOpacity(0.25),
+            spreadRadius: 0.5,
+            blurRadius: 10,
+            offset: const Offset(0, -4)),
+      ]),
       child: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -33,15 +31,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
+            icon: Icon(Icons.home_rounded),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_search),
+            icon: Icon(Icons.person_search_rounded),
             label: 'Matchmaking',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
+            icon: Icon(Icons.vpn_key_rounded),
             label: 'Game Vault',
           ),
         ],
