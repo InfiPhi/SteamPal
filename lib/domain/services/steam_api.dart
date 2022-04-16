@@ -1,6 +1,7 @@
 import 'package:steam_pal/domain/models/json/steam/player_count.dart';
 import 'package:steam_pal/domain/models/json/steam/owned_games.dart';
 import 'package:http/http.dart' as http;
+import 'package:steam_pal/domain/models/json/steam/player_summary.dart';
 import 'dart:convert';
 
 import '../models/json/steam/global_achievements.dart';
@@ -11,6 +12,17 @@ import '../utils/http_cache.dart';
 class SteamAPI {
   static const _baseURL = 'https://api.steampowered.com';
   static final _steamKey = dotenv.env['STEAM_KEY'];
+
+  static Future<SteamPlayerSummaryResponse> getPlayerSummary(int steamID) async {
+    final response = await http.get(Uri.parse(
+        '$_baseURL/ISteamUser/GetPlayerSummaries/v2/?key=$_steamKey&steamids=$steamID'));
+
+    if (response.statusCode == 200) {
+      return SteamPlayerSummaryResponse.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to get PLAYER_SUMMARY (STEAMID: $steamID)');
+    }
+  }
 
   static Future<SteamPlayerCountResponse> getPlayerCount(int gameID) async {
     final response = await http.get(Uri.parse(

@@ -31,15 +31,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
+            icon: Icon(Icons.home_rounded),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_search),
+            icon: Icon(Icons.person_search_rounded),
             label: 'Matchmaking',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
+            icon: Icon(Icons.vpn_key_rounded),
             label: 'Game Vault',
           ),
         ],
