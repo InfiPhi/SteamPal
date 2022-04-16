@@ -5,8 +5,10 @@ import 'dart:convert';
 import '../models/json/steam/global_achievements.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import '../utils/http_cache.dart';
+
 class SteamAPI {
-  static const _baseURL = 'https://api.steampowered.com/';
+  static const _baseURL = 'https://api.steampowered.com';
   static final _steamKey = dotenv.env['STEAM_KEY'];
 
   // Retrieves the global achievement percentages for the specified app
@@ -30,13 +32,13 @@ class SteamAPI {
     const includeFreeGames = true; // Includes free games
 
     final response =
-        await http.get(Uri.parse('$_baseURL/IPlayerService/GetOwnedGames/v1/'
+        await HttpProvider.getData(Uri.parse('$_baseURL/IPlayerService/GetOwnedGames/v1/'
             '?key=$_steamKey'
             '&steamid=$steamID'
             '&include_appinfo=$includeAppInfo'
             '&include_played_free_games=$includeFreeGames'
             '&appids_filter' // Leave blank
-            ));
+            ).toString(), {});
 
     if (response.statusCode == 200) {
       return SteamOwnedGamesResponse.fromJson(jsonDecode(response.body));

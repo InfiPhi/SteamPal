@@ -25,7 +25,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
         showUnselectedLabels: false,
         selectedFontSize: 0,
         iconSize: 40,
-        elevation: 0,
         currentIndex: selectedIndex,
         backgroundColor: const Color(0xff242333),
         selectedItemColor: const Color(0xff29d8f7),

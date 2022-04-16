@@ -36,28 +36,16 @@ class FriendsOnline extends StatelessWidget {
 }
 
 class Avatar extends StatelessWidget {
-  final double marginLeft;
-  final double marginTop ;
-  final double marginRight ;
-  final double marginBottom ;
   final String imageAssets;
   const Avatar(
-      this.marginLeft ,
-      this.marginTop ,
-      this.marginRight,
-      this.marginBottom ,
       this.imageAssets,
       );
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CircleAvatar(
-        radius: 80.0,
-        backgroundImage:AssetImage(imageAssets),
-      ),
-      margin: EdgeInsets.fromLTRB(marginLeft,marginTop,marginRight, marginBottom),
-
-    ) ;
+    return CircleAvatar(
+      radius: 80.0,
+      backgroundImage: AssetImage(imageAssets),
+    );
   }
 }
 

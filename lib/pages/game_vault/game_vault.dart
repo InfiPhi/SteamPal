@@ -1,30 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/text/text_gradient.dart';
+import '../../widgets/navigation/nested_navigation.dart';
+import '../../widgets/navigation/search_bar.dart';
 
 class GameVaultPage extends StatelessWidget {
-  const GameVaultPage({Key? key}) : super(key: key);
+  const GameVaultPage({Key? key, required this.navigatorKey}) : super(key: key);
+
+  final GlobalKey navigatorKey;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          TextGradient(
-            "Game Vault",
-            gradient: LinearGradient(colors: [
-              Color(0xff37C4B7),
-              Color(0xffB9C44E),
-            ]),
-            style: TextStyle(
-              fontSize: 36,
-            ),
+    return NestedNavigator(
+        navigatorKey: navigatorKey,
+        child: Center(
+          child: Column(
+            children: const [
+              //SearchBar(title: 'Game Vault', list: []),
+            ],
           ),
-          //GameList(null),
-        ],
-      ),
-    );
+        ));
   }
 }
