@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:steam_pal/domain/models/login/login_model.dart';
+import 'package:steam_pal/pages/welcome/hub.dart';
 import 'package:steam_pal/view_model/login/login_view_model.dart';
 
 import '../../domain/models/login/login_result_model.dart';
 import '../../domain/services/login.dart';
-import '../../pages/home/home.dart';
 
 class LoginViewModelImpl implements LoginViewModel {
   @override
@@ -18,7 +18,7 @@ class LoginViewModelImpl implements LoginViewModel {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) {
-          return const HomePage();
+          return const HubPage();
         }),
       );
       return true;

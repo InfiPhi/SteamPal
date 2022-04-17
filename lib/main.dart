@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:steam_pal/pages/home/home.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:steam_pal/pages/welcome/hub.dart';
 import 'package:steam_pal/pages/welcome/login.dart';
 import 'package:steam_pal/pages/welcome/splash.dart';
 
 Future main() async {
-  //await dotenv.load(fileName: ".env");
-  runApp(MyApp());
+  await dotenv.load(fileName: ".env");
+
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
   Paint.enableDithering = true;
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SplashPage(),
         '/login': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
+        '/home': (context) => HubPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.green,

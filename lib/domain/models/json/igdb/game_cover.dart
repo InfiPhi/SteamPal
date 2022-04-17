@@ -20,7 +20,7 @@ class IGDBGameCoverResponse {
 
 class IGDBGameCover {
   final int id;
-  final int gameID;
+  final int? gameID;
   final String imageID;
 
   IGDBGameCover(this.id, this.gameID, this.imageID);

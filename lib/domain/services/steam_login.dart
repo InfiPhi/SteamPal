@@ -1,23 +1,23 @@
 import 'dart:io';
+
 import 'package:steam_login/steam_login.dart';
 
-Future<void> main() async {
+Future<void> steamLogin() async {
   // Bind the HttpServer.
   var server = await HttpServer.bind(
     InternetAddress.loopbackIPv4,
     80,
   );
-
   // Start listening for HttpRequests.
+
   server.listen((request) async {
     //Check if the path is '/login'
     if (request.uri.path == '/login') {
       // Create OpenId instance with the current request.
       OpenId openId = OpenId(request);
-
       // Switch the mode
       switch (openId.mode) {
-      // No mode is set
+        // No mode is set
         case '':
           {
             //Redirect the user to the authUrl.

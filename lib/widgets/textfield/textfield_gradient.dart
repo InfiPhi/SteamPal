@@ -7,7 +7,8 @@ class TextFieldGradient extends StatefulWidget {
     this.fontSize,
     this.hint,
     this.onChange,
-    this.controller
+    this.controller,
+    this.autoFocus = false,
   }) : super(key: key);
 
   final Gradient gradient;
@@ -15,6 +16,7 @@ class TextFieldGradient extends StatefulWidget {
   final String? hint;
   final Function(String)? onChange;
   final TextEditingController? controller;
+  final bool autoFocus;
 
   @override
   State<TextFieldGradient> createState() => _TextFieldGradient();
@@ -26,6 +28,7 @@ class _TextFieldGradient extends State<TextFieldGradient> {
     return Stack(
       children: [
         TextField(
+          autofocus: widget.autoFocus,
           controller: widget.controller,
           cursorColor: const Color(0xff5ec497),
           textAlign: TextAlign.center,

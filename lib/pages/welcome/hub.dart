@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:steam_pal/pages/game_vault/game_vault.dart';
+import 'package:steam_pal/pages/game_vault/gamevault.dart';
 import 'package:steam_pal/pages/home/home.dart';
 import 'package:steam_pal/pages/matchmaking/matchmaking.dart';
 

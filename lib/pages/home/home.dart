@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:steam_pal/widgets/navigation/nested_navigation.dart';
 import 'package:steam_pal/widgets/profileComponents/profileComponents.dart';
 
-import '../../widgets/homeComponents/matchFinderSection.dart';
-import '../../widgets/homeComponents/recentGames.dart';
+import '../../widgets/home/matchFinderSection.dart';
+import '../../widgets/home/recentGames.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key, required this.navigatorKey}) : super(key: key);
+
+  final GlobalKey navigatorKey;
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +21,13 @@ class HomePage extends StatelessWidget {
       'assets/images/profile.jpeg'
     ];
     DateTime pre_backpress = DateTime.now();
-    return SafeArea(
-      //wrap the container in WillPopScope to implement 2 click to exit
+    return NestedNavigator(
+      navigatorKey: navigatorKey,
       child: WillPopScope(
         onWillPop: () async {
           final timegap = DateTime.now().difference(pre_backpress);
           final cantExit = timegap >= Duration(seconds: 2);
           pre_backpress = DateTime.now();
-
           if (cantExit) {
             //show snackbar
             final snack = SnackBar(
@@ -70,7 +72,7 @@ class HomePage extends StatelessWidget {
                         ),
                         margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
                       ),
-                      Avatar(50, 10, 0, 0, 'assets/images/profile.jpeg'),
+                      Avatar('assets/images/profile.jpeg'),
                     ],
                   ),
 

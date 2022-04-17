@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:steam_pal/pages/welcome/hub.dart';
 import 'package:steam_pal/pages/welcome/signup.dart';
 
 import '../../domain/models/login/login_model.dart';
 import '../../view_model/login/login_vie_model_imp.dart';
 import '../../widgets/buttons/button_round_gradient.dart';
 import '../../widgets/text/text_gradient.dart';
-import '../home/home.dart';
 
 class LoginPage extends ConsumerWidget {
   final accountController = TextEditingController();
@@ -128,9 +128,8 @@ class LoginPage extends ConsumerWidget {
                                     Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            HomePage(),
-                                      ),
+                                          builder: (BuildContext context) =>
+                                              HubPage()),
                                       (route) => false,
                                     );
                                   } else {
